@@ -1,3 +1,30 @@
+
+
+first E-store
+
+header: has the title 
+has the listing for products
+has a checkout 
+has sign in 
+
+
+
+listing: 
+has a listing of all the products
+can click on the specific item
+
+checkout: has the products the total price 
+you can click on the specific item
+
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
