@@ -7,7 +7,7 @@ function Header() {
   return (
     <MainHeader>
       {/* <div className="title"> */}
-      <h1>E-Store</h1>
+      <h1>Sac-Fishing</h1>
       {/* </div> */}
 
       <NavBar>
@@ -15,7 +15,7 @@ function Header() {
           <Link className="link" to="/homepage">
             <h3>Home</h3>
           </Link>
-          <Link className="link" to="/shop">
+          <Link className="link" to="/listing">
             <h3>Shop</h3>
           </Link>
           <Link className="link" to="/register">
@@ -45,7 +45,7 @@ const MainHeader = styled.div`
   background-color: grey;
   h1 {
     margin-left: 15px;
-    width: 10%;
+    width: 20%;
     font-size: 2.4rem;
     color: white;
   }
