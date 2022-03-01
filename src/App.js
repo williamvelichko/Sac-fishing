@@ -1,7 +1,8 @@
 import "./App.css";
 import Header from "./components/Header";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import HomePage from "./components/HomePage";
+import Listing from "./components/Listing";
 
 function App() {
   return (
@@ -11,8 +12,11 @@ function App() {
       </header>
 
       <div className="routes">
-        <Route path="/homepage" component={HomePage} />
-        <Route path="/" component={HomePage} />
+        <Switch>
+          <Route path="/listing" component={Listing} />
+          <Route path="/homepage" component={HomePage} />
+          <Route path="/" component={HomePage} />
+        </Switch>
       </div>
     </div>
   );
