@@ -8,7 +8,9 @@ function SignUp() {
     password: "",
   });
 
-  const submit = (e) => {};
+  const submit = (e) => {
+    e.preventDefault();
+  };
   const handleChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
@@ -77,7 +79,12 @@ const Form_container = styled.div`
       font-size: 1.2rem;
       font-weight: bold;
       color: black;
+      transition: box-shadow 0.2s;
     }
+    button:hover {
+      box-shadow: 0px 0px 10px black;
+    }
+
     .link {
       text-decoration: none;
       color: black;

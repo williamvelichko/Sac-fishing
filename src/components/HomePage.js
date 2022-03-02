@@ -6,11 +6,6 @@ function HomePage() {
   return (
     <div>
       <MainHome>
-        {/* <Home_img> */}
-        {/* <img
-          src="https://media.istockphoto.com/photos/man-fishing-at-morning-sunrise-in-a-mountain-river-in-alaska-usa-picture-id1297122324?b=1&k=20&m=1297122324&s=170667a&w=0&h=cH3eqt6zp0q1nZekYmDGXQJ2zoW1QO1scJ0xCx-qITc="
-          alt=""
-        /> */}
         <Info>
           <h1>Rods, Reels, + More</h1>
           <button>Shop Know</button>
@@ -44,11 +39,17 @@ function HomePage() {
             </Link>
           </Link_wrapper>
         </Items>
-        {/* </Home_img> */}
       </MainHome>
-      <Footer>
-        <footer>{/* s */}</footer>
-      </Footer>
+      <footer>
+        <Footer>
+          <div className="box">
+            <h3>Sac-Fishing</h3>
+            <h5>Sac-Fishing @ 2022</h5>
+          </div>
+          <div className="box">info </div>
+          <div className="box">about</div>
+        </Footer>
+      </footer>
     </div>
   );
 }
@@ -105,7 +106,7 @@ const MainHome = styled.div`
   border: 1px solid #000;
   background-image: url("https://media.istockphoto.com/photos/man-fishing-at-morning-sunrise-in-a-mountain-river-in-alaska-usa-picture-id1297122324?b=1&k=20&m=1297122324&s=170667a&w=0&h=cH3eqt6zp0q1nZekYmDGXQJ2zoW1QO1scJ0xCx-qITc=");
 
-  height: 1200px;
+  height: 1300px;
   background-size: cover;
   //mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 `;
@@ -150,7 +151,17 @@ const Link_wrapper = styled.div`
 `;
 
 const Footer = styled.div`
+  display: flex;
+  justify-content: space-evenly;
   width: 100%;
-  background-color: white;
-  height: 400px;
+  background-color: #023047;
+  margin: auto;
+  //height: 50vh;
+  .box {
+    color: white;
+    border: 2px solid white;
+    width: 10%;
+    //margin: auto;
+    padding: 100px;
+  }
 `;

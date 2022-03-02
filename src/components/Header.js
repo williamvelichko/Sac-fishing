@@ -8,9 +8,9 @@ function Header(props) {
   const { basket } = props;
   return (
     <MainHeader>
-      {/* <div className="title"> */}
-      <h1>Sac-Fishing</h1>
-      {/* </div> */}
+      <Link to="/homepage" className="title">
+        <h1>Sac-Fishing</h1>
+      </Link>
 
       <NavBar>
         <nav>
@@ -53,11 +53,18 @@ const MainHeader = styled.div`
   align-items: center;
   justify-content: space-between;
   background-color: grey;
-  h1 {
-    margin-left: 15px;
+  .title {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+
     width: 20%;
-    font-size: 2.4rem;
+    font-size: 1.2rem;
     color: white;
+    font-family: "Rowdies", cursive;
+  }
+  .title:hover {
+    border: 2px solid white;
   }
 `;
 const NavBar = styled.div`
