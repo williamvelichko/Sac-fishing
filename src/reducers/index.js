@@ -1,4 +1,4 @@
-import { ADD_TO_BASKET } from "../actions/index";
+import { ADD_TO_BASKET, REMOVE_ITEM } from "../actions/index";
 
 const initialState = {
   items: [
@@ -54,6 +54,21 @@ const reducer = (state = initialState, action) => {
         ...state,
         basket: [...state.basket, action.payload],
         EmptyBasket: false,
+      };
+
+    case REMOVE_ITEM:
+      // const index = state.basket.findIndex(
+      //   (basketItem) => basketItem.id === action.payload.id
+      // );
+      // let newBasket = [...state.basket];
+      // if (index >= 0) {
+      //   newBasket.splice(index, 1);
+      // } else {
+      //   console.warn("cant remove!");
+      // }
+      return {
+        ...state,
+        basket: state.basket.filter((item) => item.id !== action.payload.id),
       };
 
     default:
