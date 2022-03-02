@@ -6,6 +6,7 @@ import Listing from "./components/Listing";
 import Checkout from "./components/Checkout";
 import SignUp from "./components/SignUp";
 import Login from "./components/Login";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -23,6 +24,11 @@ function App() {
           <Route path="/homepage" component={HomePage} />
           <Route path="/" component={HomePage} />
         </Switch>
+      </div>
+      <div>
+        <footer>
+          <Footer />
+        </footer>
       </div>
     </div>
   );

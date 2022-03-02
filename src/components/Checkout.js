@@ -13,7 +13,7 @@ function Checkout(props) {
   };
 
   return (
-    <div>
+    <Main>
       <CheckoutTop>
         <div className="check">
           <h3>
@@ -52,7 +52,7 @@ function Checkout(props) {
           })}
         </Item_container>
       )}
-    </div>
+    </Main>
   );
 }
 const mapState = (state) => {
@@ -62,6 +62,10 @@ const mapState = (state) => {
   };
 };
 export default connect(mapState)(Checkout);
+
+const Main = styled.div`
+  margin-bottom: 150px;
+`;
 
 const Item_container = styled.div`
   // border: 2px solid grey;
@@ -90,6 +94,7 @@ const Editing = styled.div`
   width: 65%;
   margin: auto;
   margin-top: 50px;
+
   h2 {
     font-size: 2rem;
     font-family: Grover;

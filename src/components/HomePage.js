@@ -40,16 +40,6 @@ function HomePage() {
           </Link_wrapper>
         </Items>
       </MainHome>
-      <footer>
-        <Footer>
-          <div className="box">
-            <h3>Sac-Fishing</h3>
-            <h5>Sac-Fishing @ 2022</h5>
-          </div>
-          <div className="box">info </div>
-          <div className="box">about</div>
-        </Footer>
-      </footer>
     </div>
   );
 }
@@ -147,21 +137,5 @@ const Link_wrapper = styled.div`
     h4 {
       padding: 8px;
     }
-  }
-`;
-
-const Footer = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  width: 100%;
-  background-color: #023047;
-  margin: auto;
-  //height: 50vh;
-  .box {
-    color: white;
-    border: 2px solid white;
-    width: 10%;
-    //margin: auto;
-    padding: 100px;
   }
 `;
