@@ -2,8 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { connect } from "react-redux";
 
-function Header() {
+function Header(props) {
+  const { basket } = props;
   return (
     <MainHeader>
       {/* <div className="title"> */}
@@ -23,7 +25,9 @@ function Header() {
           </Link>
           <Link className="link" to="/cart">
             <ShoppingCartIcon className="cart" />
-            <span className="header__optionLineTwo header__basketCount">0</span>
+            <span className="header__optionLineTwo header__basketCount">
+              {basket.length}
+            </span>
 
             {/* <h3>Checkout</h3> */}
           </Link>
@@ -33,7 +37,13 @@ function Header() {
   );
 }
 
-export default Header;
+const mapState = (state) => {
+  return {
+    basket: state.basket,
+  };
+};
+
+export default connect(mapState)(Header);
 
 const MainHeader = styled.div`
   font-family: Fira Sans;

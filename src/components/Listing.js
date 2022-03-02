@@ -1,9 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
+import { addToBasket } from "../actions";
 
 function Listing(props) {
   const { items } = props;
+  // const submit = (e) => {
+  //   e.preventDefault();
+  //   props.dispatch(addToBasket(item));
+  // };
 
   return (
     <div>
@@ -16,7 +21,10 @@ function Listing(props) {
                 <h5>{item.description}</h5>
 
                 <h3>${item.price}</h3>
-                <button>Add to cart</button>
+
+                <button onClick={() => props.dispatch(addToBasket(item))}>
+                  Add to cart
+                </button>
               </Description>
               <img src={item.image} alt="fishing reel" />
             </Item>
