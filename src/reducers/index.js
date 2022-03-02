@@ -3,6 +3,7 @@ import { ADD_TO_BASKET } from "../actions/index";
 const initialState = {
   items: [
     {
+      rating: 5,
       id: 1,
       name: "diawa tatutla ",
       description: "The smoothest and fastest",
@@ -11,6 +12,7 @@ const initialState = {
         "https://images.unsplash.com/photo-1625982503493-0b08b284b85a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8ODR8fGZpc2hpbmclMjByZWVsfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
     },
     {
+      rating: 4,
       id: 2,
       name: "diawa tatutla ",
       description: "The smoothest and fastest",
@@ -19,6 +21,7 @@ const initialState = {
         "https://images.unsplash.com/photo-1625982503493-0b08b284b85a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8ODR8fGZpc2hpbmclMjByZWVsfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
     },
     {
+      rating: 3,
       id: 3,
       name: "diawa tatutla ",
       description: "The smoothest and fastest",
@@ -27,6 +30,7 @@ const initialState = {
         "https://images.unsplash.com/photo-1625982503493-0b08b284b85a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8ODR8fGZpc2hpbmclMjByZWVsfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
     },
     {
+      rating: 2,
       id: 4,
       name: "diawa tatutla ",
       description: "The smoothest and fastest",
