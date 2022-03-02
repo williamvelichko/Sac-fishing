@@ -20,7 +20,7 @@ function Header(props) {
           <Link className="link" to="/listing">
             <h3>Shop</h3>
           </Link>
-          <Link className="link" to="/register">
+          <Link className="link" to="/signup">
             <h3>Register</h3>
           </Link>
           <Link className="link" to="/cart">

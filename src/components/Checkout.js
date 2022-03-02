@@ -1,23 +1,29 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import { removeItem } from "../actions";
+import { getBasketTotal } from "../reducers";
 
 function Checkout(props) {
   const { basket, emptyBasket } = props;
+
   const getBasketTotal = () => {
-    return basket?.reduce((amount, item) => item.price + amount);
+    const result = basket?.reduce((amount, item) => item.price + amount, 0);
+    return result;
   };
 
   return (
     <div>
-      <div>
-        <h3>
-          Subtotal ({basket.length} items) <strong>${getBasketTotal}</strong>
-        </h3>
-        <button>Proceed To Checkout</button>
-      </div>
-      {emptyBasket ? (
+      <CheckoutTop>
+        <div className="check">
+          <h3>
+            Subtotal ({basket.length} items)
+            <strong>${0}</strong>
+          </h3>
+          <button>Proceed To Checkout</button>
+        </div>
+      </CheckoutTop>
+      {basket.length === 0 ? (
         <Editing>
           <h2>Shopping Cart Is Empty </h2>
         </Editing>
@@ -91,4 +97,27 @@ const Editing = styled.div`
 `;
 const Rating = styled.div`
   display: flex;
+`;
+const CheckoutTop = styled.div`
+  display: flex;
+  //border: 2px solid grey;
+
+  .check {
+    border: 2px solid grey;
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    margin: auto;
+    margin-right: 100px;
+    margin-top: 20px;
+    h3 {
+      padding: 10px;
+    }
+    button {
+      padding: 5px;
+      width: 90%;
+      margin: auto;
+      margin-bottom: 10px;
+    }
+  }
 `;
