@@ -95,5 +95,11 @@ const Form_container = styled.div`
   background-color: grey;
   opacity: 0.8;
   border: 1px solid grey;
-  width: 50%;
+
+  @media (max-width: 420px) {
+    width: 80%;
+    form {
+      padding: 25px;
+    }
+  }
 `;

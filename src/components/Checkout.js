@@ -83,6 +83,11 @@ const Item = styled.div`
   img {
     width: 20%;
   }
+  @media (max-width: 420px) {
+    img {
+      width: 50%;
+    }
+  }
 `;
 const Des = styled.div`
   padding: 15px;
@@ -99,13 +104,18 @@ const Editing = styled.div`
     font-size: 2rem;
     font-family: Grover;
   }
+  @media (max-width: 420px) {
+    width: 80%;
+    h2 {
+      padding: 10px;
+    }
+  }
 `;
 const Rating = styled.div`
   display: flex;
 `;
 const CheckoutTop = styled.div`
   display: flex;
-  //border: 2px solid grey;
 
   .check {
     border: 2px solid grey;
@@ -123,6 +133,13 @@ const CheckoutTop = styled.div`
       width: 90%;
       margin: auto;
       margin-bottom: 10px;
+    }
+  }
+  @media (max-width: 420px) {
+    .check {
+      width: 70%;
+      margin: auto;
+      margin-top: 15px;
     }
   }
 `;

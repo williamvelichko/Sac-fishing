@@ -46,18 +46,6 @@ function HomePage() {
 
 export default HomePage;
 
-const Home_img = styled.div`
-  //   display: flex;
-  //   flex-direction: column;
-
-  //   img {
-  //     width: 100%;
-  //     z-index: -1;
-  //     // margin-bottom: -300px;
-  //     mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
-  //   }
-`;
-
 const Info = styled.div`
   display: flex;
 
@@ -82,6 +70,16 @@ const Info = styled.div`
     font-weight: bolder;
     color: grey;
   }
+
+  @media (max-width: 420px) {
+    width: 70%;
+    h1 {
+      font-size: 1.5rem;
+    }
+    button {
+      width: 70%;
+    }
+  }
 `;
 const MainHome = styled.div`
   font-family: Fira Sans;
@@ -96,7 +94,7 @@ const MainHome = styled.div`
   border: 1px solid #000;
   background-image: url("https://media.istockphoto.com/photos/man-fishing-at-morning-sunrise-in-a-mountain-river-in-alaska-usa-picture-id1297122324?b=1&k=20&m=1297122324&s=170667a&w=0&h=cH3eqt6zp0q1nZekYmDGXQJ2zoW1QO1scJ0xCx-qITc=");
 
-  height: 1300px;
+  height: 900px;
   background-size: cover;
   //mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 `;
@@ -110,6 +108,8 @@ const Items = styled.div`
   img {
     width: 30%;
   }
+  @media (max-width: 420px) {
+  }
 `;
 const Images = styled.div`
   display: flex;
@@ -121,6 +121,8 @@ const Images = styled.div`
   img {
     width: 30%;
   }
+  @media (max-width: 420px) {
+    padding: 10px;
 `;
 const Link_wrapper = styled.div`
   display: flex;
@@ -136,6 +138,12 @@ const Link_wrapper = styled.div`
     margin-right: 50px;
     h4 {
       padding: 8px;
+    }
+  }
+  @media (max-width: 420px) {
+    .link {
+      font-size: 1rem;
+      margin: auto;
     }
   }
 `;

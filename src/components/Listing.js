@@ -59,6 +59,9 @@ const Item_container = styled.div`
   .Item:hover {
     box-shadow: 0px 0px 10px grey;
   }
+  @media (max-width: 420px) {
+    flex-direction: column;
+  }
 `;
 const Item = styled.div`
   //border: 2px solid grey;
@@ -73,6 +76,9 @@ const Item = styled.div`
     padding: 15px;
   }
   transition: box-shadow 0.3s;
+  @media (max-width: 420px) {
+    width: 100%;
+  }
 `;
 const Main = styled.div`
   margin: auto;

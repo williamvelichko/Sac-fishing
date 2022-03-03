@@ -66,6 +66,12 @@ const MainHeader = styled.div`
   .title:hover {
     border: 1px solid white;
   }
+  @media (max-width: 420px) {
+    .title {
+      font-size: 0.8rem;
+      margin-left: 15px;
+    }
+  }
 `;
 const NavBar = styled.div`
   display: flex;
@@ -95,5 +101,11 @@ const NavBar = styled.div`
   }
   .link:hover {
     border: 1px solid white;
+  }
+  @media (max-width: 420px) {
+    width: 60%;
+    .link {
+      font-size: 0.9rem;
+    }
   }
 `;
