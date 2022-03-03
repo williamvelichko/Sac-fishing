@@ -105,7 +105,14 @@ const NavBar = styled.div`
   @media (max-width: 420px) {
     width: 60%;
     .link {
-      font-size: 0.9rem;
+      width: 30%;
+      font-size: 0.8rem;
+      padding: 0;
+    }
+    nav {
+      .cart {
+        font-size: 1.5rem;
+      }
     }
   }
 `;

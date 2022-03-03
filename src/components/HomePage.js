@@ -8,7 +8,9 @@ function HomePage() {
       <MainHome>
         <Info>
           <h1>Rods, Reels, + More</h1>
-          <button>Shop Know</button>
+          <Link to="/listing" className="link">
+            Shop Know
+          </Link>
         </Info>
         <Items>
           <Images>
@@ -60,7 +62,9 @@ const Info = styled.div`
     padding: 30px;
     color: white;
   }
-  button {
+  .link {
+    text-decoration: none;
+    background-color: white;
     width: 40%;
     margin: auto;
     margin-bottom: 20px;
@@ -69,6 +73,10 @@ const Info = styled.div`
     font-size: 1.3rem;
     font-weight: bolder;
     color: grey;
+    transition: 0.2s;
+  }
+  .link:hover {
+    box-shadow: 0px 0px 10px silver;
   }
 
   @media (max-width: 420px) {
