@@ -64,7 +64,7 @@ const MainHeader = styled.div`
     font-family: "Rowdies", cursive;
   }
   .title:hover {
-    border: 2px solid white;
+    border: 1px solid white;
   }
 `;
 const NavBar = styled.div`
@@ -87,7 +87,13 @@ const NavBar = styled.div`
     font-size: 1.3rem;
     display: flex;
     align-items: center;
+    justify-content: center;
     text-decoration: none;
     color: white;
+    width: 15%;
+    padding: 10px;
+  }
+  .link:hover {
+    border: 1px solid white;
   }
 `;
