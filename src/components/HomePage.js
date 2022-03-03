@@ -94,7 +94,7 @@ const MainHome = styled.div`
   border: 1px solid #000;
   background-image: url("https://media.istockphoto.com/photos/man-fishing-at-morning-sunrise-in-a-mountain-river-in-alaska-usa-picture-id1297122324?b=1&k=20&m=1297122324&s=170667a&w=0&h=cH3eqt6zp0q1nZekYmDGXQJ2zoW1QO1scJ0xCx-qITc=");
 
-  height: 900px;
+  height: 1100px;
   background-size: cover;
   //mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 `;
