@@ -6,7 +6,7 @@ import Listing from "./components/Listing";
 import Checkout from "./components/Checkout";
 import SignUp from "./components/SignUp";
 import Login from "./components/Login";
-import Footer from "./components/footer";
+import Footer from "./components/Footer";
 
 function App() {
   return (
