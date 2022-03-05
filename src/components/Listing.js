@@ -1,21 +1,43 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
-import { addToBasket } from "../actions";
+import { addToBasket, getFishingItems } from "../actions";
+import { useHistory, Link } from "react-router-dom";
+import FishingItem from "./Item";
 
 function Listing(props) {
-  const { items } = props;
+  const { items, dispatch } = props;
+  const { push } = useHistory();
   // const submit = (e) => {
   //   e.preventDefault();
   //   props.dispatch(addToBasket(item));
   // };
+
+  useEffect(() => {
+    dispatch(getFishingItems());
+  }, []);
+
+  const handleClick = (item_id) => {
+    axios
+      .get(
+        `https://fishing-store-database.herokuapp.com/api/fishingItems/${item_id}`
+      )
+      .then((resp) => {
+        console.log(resp.data);
+      });
+  };
 
   return (
     <Main>
       <Item_container>
         {items.map((item) => {
           return (
-            <Item key={item.id} className="Item">
+            <Item
+              key={item.item_id}
+              className="Item"
+              onClick={() => handleClick(item.item_id)}
+            >
               <Description>
                 <h2>{item.name}</h2>
                 <h5>{item.description}</h5>
@@ -32,6 +54,7 @@ function Listing(props) {
                   Add to cart
                 </button>
               </Description>
+
               <img src={item.image} alt="fishing reel" />
             </Item>
           );

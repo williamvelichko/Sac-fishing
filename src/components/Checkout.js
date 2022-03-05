@@ -7,9 +7,11 @@ import { getBasketTotal } from "../reducers";
 function Checkout(props) {
   const { basket, emptyBasket } = props;
 
-  const getBasketTotal = () => {
-    const result = basket?.reduce((amount, item) => item.price + amount, 0);
-    return result;
+  const getBasketTotal = (basket) => {
+    basket?.reduce((amount, item) => item.price + amount, 0);
+    // return basket.price;
+    // console.log(basket.price);
+    // return basket.price;
   };
 
   return (
@@ -18,7 +20,7 @@ function Checkout(props) {
         <div className="check">
           <h3>
             Subtotal ({basket.length} items)
-            <strong>${0}</strong>
+            <strong>${() => getBasketTotal(basket)}</strong>
           </h3>
           <button>Proceed To Checkout</button>
         </div>
