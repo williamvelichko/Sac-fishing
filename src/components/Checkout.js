@@ -7,12 +7,14 @@ import { getBasketTotal } from "../reducers";
 function Checkout(props) {
   const { basket, emptyBasket } = props;
 
-  const getBasketTotal = (basket) => {
-    basket?.reduce((amount, item) => item.price + amount, 0);
-    // return basket.price;
-    // console.log(basket.price);
-    // return basket.price;
-  };
+  // const getBasketTotal = (basket) => {
+  //   console.log(basket);
+  //   basket.map((item) => item.price).reduce((prev, next) => prev + next);
+  //   //basket?.reduce((amount, item) => item.price + amount, 0);
+  //   // return basket.price;
+  //   // console.log(basket.price);
+  //   // return basket.price;
+  // };
 
   return (
     <Main>

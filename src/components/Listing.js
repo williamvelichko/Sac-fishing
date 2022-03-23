@@ -24,7 +24,7 @@ function Listing(props) {
         `https://fishing-store-database.herokuapp.com/api/fishingItems/${item_id}`
       )
       .then((resp) => {
-        console.log(resp.data);
+        // console.log(resp.data);
       });
   };
 
