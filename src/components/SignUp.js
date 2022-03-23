@@ -62,7 +62,7 @@ const Form_container = styled.div`
   form {
     display: flex;
     flex-direction: column;
-    padding: 150px;
+    padding: 100px;
     color: white;
     font-family: Fira Sans;
     font-size: 1.3rem;
