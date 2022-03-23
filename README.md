@@ -1,19 +1,20 @@
+<h1>Project Description</h1>
 
+First E-store
+https://sac-fishingstore.herokuapp.com/
 
-first E-store
-
-header: has the title 
+Header: has the title 
 has the listing for products
 has a checkout 
 has sign in 
 
 
 
-listing: 
+Listing: 
 has a listing of all the products
 can click on the specific item
 
-checkout: has the products the total price 
+Checkout: has the products the total price 
 you can click on the specific item
 
 
