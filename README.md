@@ -19,6 +19,23 @@ you can click on the specific item
 
 
 
+### Description: 
+Online fishing store where you can buy fishing items.
+
+Built the ability to view view the fishing items by using an restfull API endpoint and retrieving data from a backend server 
+
+Created the funcionality using funcions and loops to add items into cart and remove them from cart.
+
+Constructed the Forms for login and signup using React, HTML, and CSS but not yet connected to authentication.
+
+State is saved and used throughout the application by using Redux.
+
+Styled the application using CSS styled components and is phone size responsive.
+
+
+
+
+
 
 
 
