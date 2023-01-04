@@ -14,18 +14,18 @@ function Listing(props) {
   //   props.dispatch(addToBasket(item));
   // };
 
-  useEffect(() => {
-    dispatch(getFishingItems());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(getFishingItems());
+  // }, []);
 
   const handleClick = (item_id) => {
-    axios
-      .get(
-        `https://fishing-store-database.herokuapp.com/api/fishingItems/${item_id}`
-      )
-      .then((resp) => {
-        // console.log(resp.data);
-      });
+    // axios
+    //   .get(
+    //     `https://fishing-store-database.herokuapp.com/api/fishingItems/${item_id}`
+    //   )
+    //   .then((resp) => {
+    //     // console.log(resp.data);
+    //   });
   };
 
   return (
