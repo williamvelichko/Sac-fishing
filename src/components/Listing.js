@@ -4,28 +4,13 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 import { addToBasket, getFishingItems } from "../actions";
 import { useHistory, Link } from "react-router-dom";
-import FishingItem from "./Item";
 
 function Listing(props) {
   const { items, dispatch } = props;
   const { push } = useHistory();
-  // const submit = (e) => {
-  //   e.preventDefault();
-  //   props.dispatch(addToBasket(item));
-  // };
 
-  // useEffect(() => {
-  //   dispatch(getFishingItems());
-  // }, []);
-
-  const handleClick = (item_id) => {
-    // axios
-    //   .get(
-    //     `https://fishing-store-database.herokuapp.com/api/fishingItems/${item_id}`
-    //   )
-    //   .then((resp) => {
-    //     // console.log(resp.data);
-    //   });
+  const handleClick = (item) => {
+    push(`/singleproduct/${item.id}`);
   };
 
   return (
@@ -36,7 +21,7 @@ function Listing(props) {
             <Item
               key={item.item_id}
               className="Item"
-              onClick={() => handleClick(item.item_id)}
+              onClick={() => handleClick(item)}
             >
               <Description>
                 <h2>{item.name}</h2>
@@ -50,9 +35,6 @@ function Listing(props) {
                       <p>🌟</p>
                     ))}
                 </Rating>
-                <button onClick={() => props.dispatch(addToBasket(item))}>
-                  Add to cart
-                </button>
               </Description>
 
               <img src={item.image} alt="fishing reel" />
@@ -82,12 +64,14 @@ const Item_container = styled.div`
   .Item:hover {
     box-shadow: 0px 0px 10px grey;
   }
+  @media (max-width: 850px) {
+    flex-direction: column;
+  }
   @media (max-width: 420px) {
     flex-direction: column;
   }
 `;
 const Item = styled.div`
-  //border: 2px solid grey;
   display: flex;
   flex-direction: row;
 
@@ -97,6 +81,11 @@ const Item = styled.div`
   img {
     width: 50%;
     padding: 15px;
+    filter: brightness(1.1) invert(0);
+  }
+
+  @media (max-width: 850px) {
+    width: 100%;
   }
   transition: box-shadow 0.3s;
   @media (max-width: 420px) {
@@ -105,6 +94,7 @@ const Item = styled.div`
 `;
 const Main = styled.div`
   margin: auto;
+  font-family: Fira Sans;
 `;
 const Description = styled.div`
   padding: 15px;
