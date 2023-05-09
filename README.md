@@ -1,7 +1,7 @@
 <h1>Project Description</h1>
 
 First E-store
-https://sac-fishingstore.herokuapp.com/
+https://sac-fishing.vercel.app/
 
 Header: has the title 
 has the listing for products
