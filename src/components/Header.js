@@ -20,14 +20,16 @@ function Header(props) {
           <Link className="link" to="/listing">
             <h3>Shop</h3>
           </Link>
-          <Link className="link" to="/signup">
+          {/* <Link className="link" to="/signup">
             <h3>Register</h3>
-          </Link>
+          </Link> */}
           <Link className="link" to="/cart">
-            <ShoppingCartIcon className="cart" />
-            <span className="header__optionLineTwo header__basketCount">
-              {basket.length}
-            </span>
+            <h3>
+              <ShoppingCartIcon className="cart" />
+              <span className="header__optionLineTwo header__basketCount">
+                {basket.length}
+              </span>
+            </h3>
 
             {/* <h3>Checkout</h3> */}
           </Link>
@@ -52,33 +54,33 @@ const MainHeader = styled.div`
 
   align-items: center;
   justify-content: space-between;
-  background-color: grey;
+  background-color: #588157;
   .title {
     display: flex;
     justify-content: center;
     text-decoration: none;
 
-    width: 20%;
+    width: 30%;
     font-size: 1.2rem;
     color: white;
     font-family: "Rowdies", cursive;
   }
-  .title:hover {
-    border: 1px solid white;
+  @media (max-width: 850px) {
+    .title {
+      font-size: 0.8rem;
+    }
   }
   @media (max-width: 420px) {
     .title {
-      font-size: 0.8rem;
-      margin-left: 15px;
+      font-size: 0.5rem;
     }
   }
 `;
 const NavBar = styled.div`
   display: flex;
   flex-direction: row;
-
   width: 50%;
-  margin-right: 20px;
+
   nav {
     width: 100%;
     display: flex;
@@ -96,17 +98,30 @@ const NavBar = styled.div`
     justify-content: center;
     text-decoration: none;
     color: white;
-    width: 15%;
+    width: 25%;
     padding: 10px;
+
+    h3 {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      width: 60%;
+      border-bottom: 2px solid #588157;
+      transition: all 0.3s ease;
+    }
   }
+
   .link:hover {
-    border: 1px solid white;
+    h3 {
+      border-bottom: 2px solid white;
+    }
   }
   @media (max-width: 420px) {
     width: 60%;
     .link {
       width: 30%;
-      font-size: 0.8rem;
+      font-size: 0.7rem;
       padding: 0;
     }
     nav {

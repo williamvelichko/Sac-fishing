@@ -6,15 +6,11 @@ import { getBasketTotal } from "../reducers";
 
 function Checkout(props) {
   const { basket, emptyBasket } = props;
-
-  // const getBasketTotal = (basket) => {
-  //   console.log(basket);
-  //   basket.map((item) => item.price).reduce((prev, next) => prev + next);
-  //   //basket?.reduce((amount, item) => item.price + amount, 0);
-  //   // return basket.price;
-  //   // console.log(basket.price);
-  //   // return basket.price;
-  // };
+  console.log(basket);
+  const price =
+    basket.length !== 0
+      ? basket.map((item) => item.price).reduce((prev, next) => prev + next)
+      : 0;
 
   return (
     <Main>
@@ -22,7 +18,7 @@ function Checkout(props) {
         <div className="check">
           <h3>
             Subtotal ({basket.length} items)
-            <strong>${() => getBasketTotal(basket)}</strong>
+            <strong>${price}</strong>
           </h3>
           <button>Proceed To Checkout</button>
         </div>
@@ -72,7 +68,6 @@ const Main = styled.div`
 `;
 
 const Item_container = styled.div`
-  // border: 2px solid grey;
   width: 70%;
   margin: auto;
   margin-top: 30px;
@@ -86,6 +81,7 @@ const Item = styled.div`
   padding-bottom: 20px;
   img {
     width: 20%;
+    filter: brightness(1.1) invert(0);
   }
   @media (max-width: 420px) {
     img {

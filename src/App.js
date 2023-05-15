@@ -8,6 +8,7 @@ import SignUp from "./components/SignUp";
 import Login from "./components/Login";
 import Footer from "./components/Footer";
 import Item from "./components/Item";
+import SingleProduct from "./components/SingleProduct";
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
 
       <div className="routes">
         <Switch>
-          <Route path="/fishingitem" component={Item} />
+          <Route path="/singleproduct/:id" component={SingleProduct} />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={SignUp} />
           <Route path="/cart" component={Checkout} />

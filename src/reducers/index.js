@@ -3,36 +3,48 @@ import { ADD_TO_BASKET, REMOVE_ITEM, GET_ITEMS } from "../actions/index";
 const initialState = {
   items: [
     {
+      id: 1,
       name: "Diawa Tatula",
-      description: "The fastest, the smoothest, the best",
+      description:
+        "More compact and palmable than ever, the lightweight Daiwa® Tatula CT Baitcast Reel offers superior castability and control for a wide range of bassin' techniques",
       price: 150.0,
       rating: 5,
+      inBasket: 0,
       image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbcvRn8k4A4N348otUmflT0AUP3XBBkSo55A&usqp=CAU",
+        "https://www.pngfind.com/pngs/m/164-1646851_fishing-reel-png-png-download-fishing-reel-transparent.png",
     },
     {
-      name: "Shimano curado",
-      description: "The fastest, the smoothest, the best",
+      id: 2,
+      name: "PENN Spinfisher VI Spinning Reel",
+      description:
+        "One of the most recognized and accomplished saltwater spinning reels in the world, the PENN® Spinfisher® is a real workhorse.",
       price: 100.0,
       rating: 4,
+      inBasket: 0,
       image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbcvRn8k4A4N348otUmflT0AUP3XBBkSo55A&usqp=CAU",
+        "https://img.favpng.com/10/17/25/fishing-reels-penn-reels-fishing-rods-fishing-tackle-png-favpng-326aqDmwbGDmF6mxTjT8JEVyq.jpg",
     },
     {
+      id: 3,
       name: "shimano slx 200",
-      description: "The fastest, the smoothest, the best",
+      description:
+        "Quick and stealthy, or tough and strong. Whatever you need your reel to be, the Shimano® Vanford Spinning Reel can handle the challenge.",
       price: 200.0,
       rating: 5,
+      inBasket: 0,
       image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDhEQmW-hGtpSLxRqFZfyZ99xXaQswV-odzQ&usqp=CAU",
+        "https://img.favpng.com/10/0/17/fishing-reels-gold-freilaufrolle-station-rrolle-mitchell-avocet-rtz-spinning-reel-png-favpng-sUTSSE4af8W8SkfMF0BpMy80V.jpg",
     },
     {
-      name: "Diawa Tatula",
-      description: "The fastest, the smoothest, the best",
+      id: 4,
+      name: "Okuma Solterra SLX-B ",
+      description:
+        "The power to prevail, plus a bevy of refined features, make the Okuma Solterra SLX-B Lever Drag Dual-Speed Reel a smart choice for your big-game fishing exploits",
       price: 150.0,
       rating: 5,
+      inBasket: 0,
       image:
-        "https://images.unsplash.com/photo-1625982503493-0b08b284b85a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8ODR8fGZpc2hpbmclMjByZWVsfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
+        "https://www.pngfind.com/pngs/m/605-6057142_saltwater-fishing-reels-saltwater-fishing-rods-penn-international.png",
     },
   ],
   basket: [],
