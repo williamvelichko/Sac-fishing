@@ -3,8 +3,8 @@ export const ADD_TO_BASKET = "ADD_TO_BASKET";
 export const REMOVE_ITEM = "REMOVE_ITEM";
 export const GET_ITEMS = "GET_ITEMS";
 
-export const addToBasket = (item) => {
-  return { type: ADD_TO_BASKET, payload: item };
+export const addToBasket = (item, quantity) => {
+  return { type: ADD_TO_BASKET, payload: item, amount: quantity };
 };
 
 export const removeItem = (item) => {

@@ -90,6 +90,13 @@ const Item = styled.div`
   transition: box-shadow 0.3s;
   @media (max-width: 420px) {
     width: 100%;
+    align-items: center;
+    img {
+      width: 60%;
+      height: 40vh;
+      padding: 0;
+      background-size: contain;
+    }
   }
 `;
 const Main = styled.div`
@@ -98,6 +105,16 @@ const Main = styled.div`
 `;
 const Description = styled.div`
   padding: 15px;
+  @media (max-width: 420px) {
+    padding: 5px;
+    width: 40%;
+    h2 {
+      font-size: 1.2rem;
+    }
+    h5 {
+      font-size: 0.7rem;
+    }
+  }
 `;
 const Rating = styled.div`
   display: flex;
