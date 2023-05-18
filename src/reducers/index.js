@@ -52,17 +52,36 @@ const initialState = {
 };
 
 export const getBasketTotal = (basket) => {
-  basket?.reduce((amount, item) => item.price + amount, 0);
+  return basket.length !== 0
+    ? basket
+        .map((item) => item.price * item.inBasket)
+        .reduce((prev, next) => prev + next)
+    : 0;
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TO_BASKET:
-      return {
-        ...state,
-        basket: [...state.basket, action.payload],
-        EmptyBasket: false,
-      };
+      const product = state.items.filter(
+        (item) => item.id === action.payload.id
+      );
+      const prInBsk = state.basket.filter((pr) => pr.id === product[0].id);
+      console.log("adding");
+      const integer = parseInt(action.amount);
+
+      if (prInBsk.length === 0) {
+        return {
+          ...state,
+          basket: [...state.basket, action.payload],
+          product: [(product[0].inBasket = integer)],
+          EmptyBasket: false,
+        };
+      } else {
+        return {
+          ...state,
+          product: [(product[0].inBasket = integer)],
+        };
+      }
 
     case REMOVE_ITEM:
       const index = state.basket.findIndex(

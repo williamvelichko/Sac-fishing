@@ -1,26 +1,42 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import { removeItem } from "../actions";
 import { getBasketTotal } from "../reducers";
+import SPCheckout from "../singleProduct/SPCheckout";
 
 function Checkout(props) {
-  const { basket, emptyBasket } = props;
-  console.log(basket);
-  const price =
-    basket.length !== 0
-      ? basket.map((item) => item.price).reduce((prev, next) => prev + next)
-      : 0;
+  const { basket, emptyBasket, dispatch } = props;
+
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  useEffect(() => {
+    setTotalPrice(
+      basket.length !== 0
+        ? basket
+            .map((item) => item.price * item.inBasket)
+            .reduce((prev, next) => prev + next)
+        : 0
+    );
+  }, []);
 
   return (
     <Main>
       <CheckoutTop>
         <div className="check">
+          <h2>Shopping Cart</h2>
           <h3>
-            Subtotal ({basket.length} items)
-            <strong>${price}</strong>
+            Subtotal:
+            <strong>
+              $
+              {basket.length !== 0
+                ? basket
+                    .map((item) => item.price * item.inBasket)
+                    .reduce((prev, next) => prev + next)
+                : 0}
+            </strong>
           </h3>
-          <button>Proceed To Checkout</button>
+          {/* <button>Proceed To Checkout</button> */}
         </div>
       </CheckoutTop>
       {basket.length === 0 ? (
@@ -30,25 +46,7 @@ function Checkout(props) {
       ) : (
         <Item_container>
           {basket.map((item) => {
-            return (
-              <Item key={item.id}>
-                <img src={item.image} alt="image" />
-                <Des>
-                  <h2>{item.name}</h2>
-                  <Rating>
-                    {Array(item.rating)
-                      .fill()
-                      .map((_, i) => (
-                        <p>🌟</p>
-                      ))}
-                  </Rating>
-                  <h3>${item.price}</h3>
-                  <button onClick={() => props.dispatch(removeItem(item))}>
-                    Remove Item
-                  </button>
-                </Des>
-              </Item>
-            );
+            return <SPCheckout key={item.id} item={item} dispatch={dispatch} />;
           })}
         </Item_container>
       )}
@@ -64,34 +62,26 @@ const mapState = (state) => {
 export default connect(mapState)(Checkout);
 
 const Main = styled.div`
-  margin-bottom: 150px;
+  display: flex;
+  flex-direction: column;
+  min-height: 80vh;
+  font-family: Fira Sans;
+  align-items: center;
 `;
 
 const Item_container = styled.div`
-  width: 70%;
+  width: 80%;
   margin: auto;
   margin-top: 30px;
+
+  @media (max-width: 850px) {
+    width: 90%;
+  }
+  @media (max-width: 550px) {
+    width: 100%;
+  }
 `;
 
-const Item = styled.div`
-  display: flex;
-  width: 100%;
-  border-bottom: 2px solid grey;
-  margin-bottom: 20px;
-  padding-bottom: 20px;
-  img {
-    width: 20%;
-    filter: brightness(1.1) invert(0);
-  }
-  @media (max-width: 420px) {
-    img {
-      width: 50%;
-    }
-  }
-`;
-const Des = styled.div`
-  padding: 15px;
-`;
 const Editing = styled.div`
   border: 2px solid red;
   display: flex;
@@ -99,47 +89,67 @@ const Editing = styled.div`
   width: 65%;
   margin: auto;
   margin-top: 50px;
+  font-family: Fira Sans;
 
   h2 {
     font-size: 2rem;
-    font-family: Grover;
   }
   @media (max-width: 420px) {
     width: 80%;
     h2 {
       padding: 10px;
+      font-size: 1.6rem;
     }
   }
 `;
-const Rating = styled.div`
-  display: flex;
-`;
-const CheckoutTop = styled.div`
-  display: flex;
 
+const CheckoutTop = styled.div`
+  width: 90%;
+  // margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  border-bottom: 1px solid grey;
+  @media (max-width: 550px) {
+  }
   .check {
-    border: 2px solid grey;
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    width: 20%;
-    margin: auto;
-    margin-right: 100px;
-    margin-top: 20px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    h2 {
+      width: 20%;
+      display: flex;
+      justify-content: center;
+      font-size: 1.5rem;
+      @media (max-width: 850px) {
+        width: 40%;
+        font-size: 1.3rem;
+      }
+      @media (max-width: 420px) {
+        font-size: 1rem;
+        width: 45%;
+      }
+    }
     h3 {
       padding: 10px;
-    }
-    button {
-      padding: 5px;
-      width: 90%;
-      margin: auto;
-      margin-bottom: 10px;
+      width: 20%;
+      display: flex;
+      justify-content: space-evenly;
+      font-size: 1.1rem;
+      align-items: center;
+      @media (max-width: 850px) {
+        width: 35%;
+        font-size: 1rem;
+      }
+      @media (max-width: 420px) {
+        width: 40%;
+        font-size: 0.8rem;
+      }
     }
   }
   @media (max-width: 420px) {
-    .check {
-      width: 70%;
-      margin: auto;
-      margin-top: 15px;
-    }
   }
 `;

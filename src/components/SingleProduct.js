@@ -2,14 +2,15 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import { useHistory, Link, useParams } from "react-router-dom";
-import { addToBasket, getFishingItems } from "../actions";
+import { addToBasket } from "../actions";
 
 function SingleProduct(props) {
   const { id } = useParams();
 
   const [product, setProduct] = useState([]);
 
-  const { items } = props;
+  const [quantity, setQuantity] = useState(1);
+  const { items, dispatch } = props;
 
   useEffect(() => {
     items
@@ -18,6 +19,23 @@ function SingleProduct(props) {
         setProduct(item);
       });
   }, []);
+
+  const oneLess = () => {
+    quantity > 1 && setQuantity(quantity - 1);
+  };
+
+  const oneMore = () => {
+    setQuantity(quantity + 1);
+  };
+
+  const handleChange = (e) => {
+    setQuantity((e.target.name = e.target.value));
+  };
+
+  const addToCheckout = (e) => {
+    dispatch(addToBasket(product, quantity));
+    setQuantity(1);
+  };
 
   return (
     <Container>
@@ -36,9 +54,23 @@ function SingleProduct(props) {
               ))}
           </Rating>
           <h5>{product.description}</h5>
-
-          <h3>${product.price}</h3>
-          <Button onClick={() => props.dispatch(addToBasket(product))}>
+          <Pricing>
+            <h3>${product.price * quantity}</h3>
+            <QuanitityInput>
+              <button onClick={oneLess}>-</button>
+              <input
+                type="text"
+                id="quantity"
+                name="quantity"
+                value={quantity}
+                onChange={handleChange}
+                min="1"
+                max="5"
+              ></input>
+              <button onClick={oneMore}>+</button>
+            </QuanitityInput>
+          </Pricing>
+          <Button onClick={addToCheckout}>
             <p>Add to cart</p>
           </Button>
         </Description>
@@ -56,7 +88,6 @@ export default connect(mapState)(SingleProduct);
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-
   align-items: center;
 `;
 
@@ -145,5 +176,39 @@ const Button = styled.button`
     p {
       font-size: 0.8rem;
     }
+  }
+`;
+const Pricing = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 50%;
+  margin-bottom: 25px;
+  h3 {
+    width: 40%;
+  }
+  @media (max-width: 420px) {
+    width: 70%;
+  }
+`;
+
+const QuanitityInput = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 60%;
+  input {
+    width: 30%;
+    height: 45%;
+    text-align: center;
+    border: 1px solid black;
+  }
+  button {
+    height: 35%;
+    background-color: white;
+    border: 1px solid black;
+    font-size: 1rem;
   }
 `;
