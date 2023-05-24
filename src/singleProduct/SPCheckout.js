@@ -2,26 +2,43 @@ import React, { useEffect, useState } from "react";
 import { removeItem, addToBasket } from "../actions";
 import styled from "styled-components";
 
-function SPCheckout(props) {
-  const { item, dispatch } = props;
+function SPCheckout({ item, dispatch, calculateTotalPrice }) {
   const [quantity, setQuantity] = useState(item.inBasket);
 
   useEffect(() => {
-    setTimeout(() => {
+    const updateQuantity = () => {
       dispatch(addToBasket(item, quantity));
-    }, 1000);
-  }, [quantity]);
+      calculateTotalPrice();
+    };
+
+    const delay = setTimeout(updateQuantity, 1000);
+
+    return () => clearTimeout(delay);
+  }, [quantity, item, dispatch, calculateTotalPrice]);
 
   const handleChange = (e) => {
-    setQuantity((e.target.name = e.target.value));
+    const inputValue = e.target.value;
+    const parsedValue = parseInt(inputValue);
+
+    if (!isNaN(parsedValue) && parsedValue >= 1 && parsedValue <= 5) {
+      setQuantity(parsedValue);
+    }
   };
 
-  const oneLess = function () {
-    quantity > 1 && setQuantity(quantity - 1);
+  const handleDecrement = () => {
+    if (quantity > 1) {
+      setQuantity((prevQuantity) => prevQuantity - 1);
+    }
   };
 
-  const oneMore = function () {
-    setQuantity(quantity + 1);
+  const handleIncrement = () => {
+    if (quantity < 5) {
+      setQuantity((prevQuantity) => prevQuantity + 1);
+    }
+  };
+
+  const handleRemove = () => {
+    dispatch(removeItem(item));
   };
 
   return (
@@ -33,29 +50,25 @@ function SPCheckout(props) {
           {Array(item.rating)
             .fill()
             .map((_, i) => (
-              <p>🌟</p>
+              <p key={i}>🌟</p>
             ))}
         </Rating>
         <Pricing>
           <h3>${item.price * quantity}</h3>
           <QuantityInput>
-            <button onClick={oneLess}>-</button>
+            <button onClick={handleDecrement}>-</button>
             <input
               type="text"
               id="quantity"
               name="quantity"
-              min="1"
-              max="5"
               value={quantity}
               onChange={handleChange}
-            ></input>
-            <button onClick={oneMore}>+</button>
+            />
+            <button onClick={handleIncrement}>+</button>
           </QuantityInput>
         </Pricing>
         <ButtonDiv>
-          <RemoveButton onClick={() => dispatch(removeItem(item))}>
-            Remove
-          </RemoveButton>
+          <RemoveButton onClick={handleRemove}>Remove</RemoveButton>
         </ButtonDiv>
       </Des>
     </Item>

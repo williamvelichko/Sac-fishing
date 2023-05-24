@@ -8,7 +8,6 @@ function SingleProduct(props) {
   const { id } = useParams();
 
   const [product, setProduct] = useState([]);
-
   const [quantity, setQuantity] = useState(1);
   const { items, dispatch } = props;
 
