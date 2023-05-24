@@ -1,14 +1,12 @@
 import axios from "axios";
-import React, { useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
-import { addToBasket, getFishingItems } from "../actions";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 function Listing(props) {
-  const { items, dispatch } = props;
+  const { items } = props;
   const { push } = useHistory();
-
   const handleClick = (item) => {
     push(`/singleproduct/${item.id}`);
   };
@@ -36,13 +34,11 @@ function Listing(props) {
                     ))}
                 </Rating>
               </Description>
-
               <img src={item.image} alt="fishing reel" />
             </Item>
           );
         })}
       </Item_container>
-      <footer></footer>
     </Main>
   );
 }
@@ -59,7 +55,6 @@ const Item_container = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-
   width: 100%;
   .Item:hover {
     box-shadow: 0px 0px 10px grey;

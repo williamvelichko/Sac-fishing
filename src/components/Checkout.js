@@ -1,24 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
-import { removeItem } from "../actions";
-import { getBasketTotal } from "../reducers";
 import SPCheckout from "../singleProduct/SPCheckout";
 
 function Checkout(props) {
-  const { basket, emptyBasket, dispatch } = props;
+  const { basket, dispatch } = props;
 
   const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
-    setTotalPrice(
-      basket.length !== 0
-        ? basket
-            .map((item) => item.price * item.inBasket)
-            .reduce((prev, next) => prev + next)
-        : 0
-    );
-  }, []);
+    calculateTotalPrice();
+  }, [basket]);
+
+  const calculateTotalPrice = function () {
+    if (basket.length === 0) {
+      setTotalPrice(0);
+    } else {
+      const totalPrice = basket
+        .map((item) => item.price * item.inBasket)
+        .reduce((prev, next) => prev + next);
+      setTotalPrice(totalPrice);
+    }
+  };
 
   return (
     <Main>
@@ -27,38 +30,36 @@ function Checkout(props) {
           <h2>Shopping Cart</h2>
           <h3>
             Subtotal:
-            <strong>
-              $
-              {basket.length !== 0
-                ? basket
-                    .map((item) => item.price * item.inBasket)
-                    .reduce((prev, next) => prev + next)
-                : 0}
-            </strong>
+            <strong>${totalPrice}</strong>
           </h3>
-          {/* <button>Proceed To Checkout</button> */}
         </div>
       </CheckoutTop>
       {basket.length === 0 ? (
         <Editing>
-          <h2>Shopping Cart Is Empty </h2>
+          <h2>Shopping Cart Is Empty</h2>
         </Editing>
       ) : (
-        <Item_container>
-          {basket.map((item) => {
-            return <SPCheckout key={item.id} item={item} dispatch={dispatch} />;
-          })}
-        </Item_container>
+        <ItemContainer>
+          {basket.map((item) => (
+            <SPCheckout
+              key={item.id}
+              item={item}
+              dispatch={dispatch}
+              calculateTotalPrice={calculateTotalPrice}
+            />
+          ))}
+        </ItemContainer>
       )}
     </Main>
   );
 }
+
 const mapState = (state) => {
   return {
     basket: state.basket,
-    emptyBasket: state.EmptyBasket,
   };
 };
+
 export default connect(mapState)(Checkout);
 
 const Main = styled.div`
@@ -69,7 +70,7 @@ const Main = styled.div`
   align-items: center;
 `;
 
-const Item_container = styled.div`
+const ItemContainer = styled.div`
   width: 80%;
   margin: auto;
   margin-top: 30px;
@@ -105,7 +106,6 @@ const Editing = styled.div`
 
 const CheckoutTop = styled.div`
   width: 90%;
-  // margin: auto;
   display: flex;
   flex-direction: row;
   justify-content: center;

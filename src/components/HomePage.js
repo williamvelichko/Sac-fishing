@@ -18,12 +18,10 @@ function HomePage() {
           src="https://media.istockphoto.com/photos/fishing-rod-with-a-spinning-reel-in-the-hands-of-a-fisherman-fishing-picture-id1211643124?b=1&k=20&m=1211643124&s=170667a&w=0&h=ni6V9ehTW1UFurMWdIzfEUmYfJvWIDnNFU9lqkjQ7PQ="
           alt="fishing rod"
         />
-
         <img
           src="https://images.unsplash.com/photo-1537872384762-e785271d14f8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fGZpc2hpbmclMjByb2RzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
           alt="fishing rod"
         />
-
         <img
           src="https://media.istockphoto.com/photos/fishing-lures-in-tackle-boxes-with-spinning-rod-and-net-picture-id471194270?b=1&k=20&m=471194270&s=170667a&w=0&h=WYYIxubGRHfy5StOmPpn8Y7mQckqlr3G3eMPtfIcpyY="
           alt="tackle"
