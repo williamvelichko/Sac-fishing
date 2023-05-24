@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import EmailIcon from "@mui/icons-material/Email";
@@ -9,7 +8,7 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
 function Footer() {
   return (
-    <FooterStyle>
+    <FooterContainer>
       <div className="box">
         <div className="box2">
           <h2 className="title">Sac-Fishing</h2>
@@ -22,12 +21,10 @@ function Footer() {
             <LocationOnIcon />
             Sacramento, California
           </h4>
-
           <h4>
             <LocalPhoneIcon />
             (916) 882-6630
           </h4>
-
           <h4>
             <EmailIcon />
             williamvelichko2003@gmail.com
@@ -56,13 +53,13 @@ function Footer() {
           </a>
         </div>
       </div>
-    </FooterStyle>
+    </FooterContainer>
   );
 }
 
 export default Footer;
 
-const FooterStyle = styled.div`
+const FooterContainer = styled.footer`
   font-family: Fira Sans;
   display: flex;
   justify-content: space-evenly;

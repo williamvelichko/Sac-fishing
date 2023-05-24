@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
-import { removeItem } from "../actions";
-import { getBasketTotal } from "../reducers";
 import SPCheckout from "../singleProduct/SPCheckout";
 
 function Checkout(props) {
@@ -64,61 +62,6 @@ const mapState = (state) => {
 
 export default connect(mapState)(Checkout);
 
-// function Checkout(props) {
-//   const { basket, emptyBasket, dispatch } = props;
-
-//   const [totalPrice, setTotalPrice] = useState(0);
-
-//   useEffect(() => {
-//     setTotalPrice(
-//       basket.length !== 0
-//         ? basket
-//             .map((item) => item.price * item.inBasket)
-//             .reduce((prev, next) => prev + next)
-//         : 0
-//     );
-//   }, []);
-
-//   return (
-//     <Main>
-//       <CheckoutTop>
-//         <div className="check">
-//           <h2>Shopping Cart</h2>
-//           <h3>
-//             Subtotal:
-//             <strong>
-//               $
-//               {basket.length !== 0
-//                 ? basket
-//                     .map((item) => item.price * item.inBasket)
-//                     .reduce((prev, next) => prev + next)
-//                 : 0}
-//             </strong>
-//           </h3>
-//         </div>
-//       </CheckoutTop>
-//       {basket.length === 0 ? (
-//         <Editing>
-//           <h2>Shopping Cart Is Empty </h2>
-//         </Editing>
-//       ) : (
-//         <Item_container>
-//           {basket.map((item) => {
-//             return <SPCheckout key={item.id} item={item} dispatch={dispatch} />;
-//           })}
-//         </Item_container>
-//       )}
-//     </Main>
-//   );
-// }
-// const mapState = (state) => {
-//   return {
-//     basket: state.basket,
-//     emptyBasket: state.EmptyBasket,
-//   };
-// };
-// export default connect(mapState)(Checkout);
-
 const Main = styled.div`
   display: flex;
   flex-direction: column;
@@ -127,9 +70,7 @@ const Main = styled.div`
   align-items: center;
 `;
 
-const ItemContainer = styled.div``;
-
-const Item_container = styled.div`
+const ItemContainer = styled.div`
   width: 80%;
   margin: auto;
   margin-top: 30px;
@@ -165,7 +106,6 @@ const Editing = styled.div`
 
 const CheckoutTop = styled.div`
   width: 90%;
-  // margin: auto;
   display: flex;
   flex-direction: row;
   justify-content: center;
