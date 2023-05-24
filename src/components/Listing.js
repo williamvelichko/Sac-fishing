@@ -1,12 +1,11 @@
 import axios from "axios";
-import React, { useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
-import { addToBasket, getFishingItems } from "../actions";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 function Listing(props) {
-  const { items, dispatch } = props;
+  const { items } = props;
   const { push } = useHistory();
 
   const handleClick = (item) => {
@@ -42,7 +41,6 @@ function Listing(props) {
           );
         })}
       </Item_container>
-      <footer></footer>
     </Main>
   );
 }

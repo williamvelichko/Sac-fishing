@@ -6,21 +6,24 @@ import { addToBasket } from "../actions";
 
 function SingleProduct(props) {
   const { id } = useParams();
-
   const [product, setProduct] = useState([]);
   const [quantity, setQuantity] = useState(1);
   const { items, dispatch } = props;
+  const history = useHistory();
 
   useEffect(() => {
-    items
-      .filter((item) => item.id === parseInt(id))
-      .map((item) => {
-        setProduct(item);
-      });
-  }, []);
+    const selectedProduct = items.find((item) => item.id === parseInt(id));
+    if (selectedProduct) {
+      setProduct(selectedProduct);
+    } else {
+      history.push("/");
+    }
+  }, [id, items, history]);
 
   const oneLess = () => {
-    quantity > 1 && setQuantity(quantity - 1);
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
   };
 
   const oneMore = () => {
@@ -28,10 +31,10 @@ function SingleProduct(props) {
   };
 
   const handleChange = (e) => {
-    setQuantity((e.target.name = e.target.value));
+    setQuantity(parseInt(e.target.value));
   };
 
-  const addToCheckout = (e) => {
+  const addToCheckout = () => {
     dispatch(addToBasket(product, quantity));
     setQuantity(1);
   };
@@ -44,18 +47,17 @@ function SingleProduct(props) {
         </ImgContainer>
         <Description>
           <h2>{product.name}</h2>
-
           <Rating>
             {Array(product.rating)
               .fill()
               .map((_, i) => (
-                <p>🌟</p>
+                <p key={i}>🌟</p>
               ))}
           </Rating>
           <h5>{product.description}</h5>
           <Pricing>
             <h3>${product.price * quantity}</h3>
-            <QuanitityInput>
+            <QuantityInput>
               <button onClick={oneLess}>-</button>
               <input
                 type="text"
@@ -65,9 +67,9 @@ function SingleProduct(props) {
                 onChange={handleChange}
                 min="1"
                 max="5"
-              ></input>
+              />
               <button onClick={oneMore}>+</button>
-            </QuanitityInput>
+            </QuantityInput>
           </Pricing>
           <Button onClick={addToCheckout}>
             <p>Add to cart</p>
@@ -77,12 +79,14 @@ function SingleProduct(props) {
     </Container>
   );
 }
-const mapState = (state) => {
+
+const mapStateToProps = (state) => {
   return {
     items: state.items,
   };
 };
-export default connect(mapState)(SingleProduct);
+
+export default connect(mapStateToProps)(SingleProduct);
 
 const Container = styled.div`
   display: flex;
@@ -191,7 +195,7 @@ const Pricing = styled.div`
   }
 `;
 
-const QuanitityInput = styled.div`
+const QuantityInput = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
