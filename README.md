@@ -6,7 +6,7 @@ https://sac-fishing.vercel.app/
 Header: has the title 
 has the listing for products
 has a checkout 
-has sign in 
+
 
 
 
@@ -22,19 +22,13 @@ you can click on the specific item
 ### Description: 
 Online fishing store where you can buy fishing items.
 
-Built the ability to view view the fishing items by using an restfull API endpoint and retrieving data from a backend server 
+Built the ability to view view the fishing items
 
-Created the funcionality using funcions and loops to add items into cart and remove them from cart.
-
-Constructed the Forms for login and signup using React, HTML, and CSS but not yet connected to authentication.
+Created the funcionality to add items into cart and remove them from cart by using Redux, Functions and Props.
 
 State is saved and used throughout the application by using Redux.
 
 Styled the application using CSS styled components and is phone size responsive.
-
-
-
-
 
 
 
